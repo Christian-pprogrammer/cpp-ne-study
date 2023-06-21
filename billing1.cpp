@@ -50,9 +50,9 @@ void shopping::menu()
   {
     case 1:
       cout << "\t\t\t Please Login \n";
-      cout << "\t\t\t Enter Email  \n";
+      cout << "\t\t\t Enter Email(default is robby@gmail.com for admin):  \n";
       cin >> email;
-      cout << "\t\t\t Password     \n";
+      cout << "\t\t\t Password(default is robby@123 for admin):     \n";
       cin >> password;
 
       if(email == "robby@gmail.com" && password == "robby@123") {
@@ -310,64 +310,11 @@ void shopping::list ()
 
 void shopping::receipt ()
 {
-  fstream data;
-  
-  int arrc[100];
-  int arrq[100];
-  char choice;
-  int c = 0;
-  float amount;
-  float discount = 0;
-  float total = 0;
-  cout << "\n\n\t\t\t\t RECEIPT ";
-  
-  data.open("database.txt", ios::in);
-  if(!data) {
-    cout << "\n\n Empty database";
-  }
-  else{
-    data.close();
-    list();
-    cout << "\n________________________________\n";
-    cout << "\n                                \n";
-    cout << "\n        Please place the order  \n";
-    cout << "\n                                \n";
-    cout << "\n________________________________\n";                      
+  cout << "receipt";
+}
 
-    do
-    {
-      cout << "\n\n Enter Product code: ";
-      cin >> arrc[c];
-      cout << "\n\nEnter the product quantity";
-      cin >> arrq[c];
-      for(int i = 0; i < c; i++) {
-        if(arrc[c] == arrc[i]) {
-          cout << "\n\n Duplicate product code. Please try again!";
-          goto m;
-        }
-      }
-      c++;
-      cout << "\n\n Do you want to buy another product? If yes then press y else no";
-      cin >> choice;
-    } while (choice == "y");
-    cout << "\n\n\t\t\t_______________RECEIPT_____________________________________\n";
-    cout << "\nProductNo\t product Name\t product quantity\t Price\t Amount\t Amount with discount\n"
-    for (int i = 0; i < count; i++)
-    {
-      data.open("database.txt", ios::in);
-      data >> pcode >> pname >> price >> discount;
-
-      while (!data.eof())
-      {
-        if(pcode == arrc[i]) {
-          amount = price * arrq[i];
-          discount = amount - (amount*discount/100)
-          total = total + discount;
-          cout << "\n" << pcode << pname << arr[i] << price << amount << discount;
-        }
-      }
-      
-    }
-    
-  }
+int main () {
+  shopping sh;
+  sh.menu();
+  return 0;
 }
